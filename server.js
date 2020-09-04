@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const helmet = require("helmet");
 const compression = require("compression");
+const session = require("express-session"); 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo")(session);
