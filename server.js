@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const compression = require("compression");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const MongoStore = require("connect-mongo")(session);
 const db = require("./config/database");
 const routes = require("./config/routes");
 
@@ -14,6 +15,21 @@ const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+const sessAge = Number(180 * 60 * 1000);
+let sessionOptions = {
+  secret: process.env.SECRET,
+  cookie: { maxAge: sessAge },
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db,
+    ttl: 24 * 60 * 60 * 14,
+    autoRemove: "interval",
+    autoRemoveInterval: 10,
+  }),
+};
+app.use(session(sessionOptions));
 
 app.use(helmet());
 app.use(compression());

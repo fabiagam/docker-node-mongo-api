@@ -123,7 +123,7 @@ UserSchema.statics.updateLastLogin = (docId) => {
   return new Promise((resolve, reject) => {
     let newDate = date.setCoreDate(date.getCurrentTimestamp());
     let update = { last_login: newDate };
-    Customer.findByIdAndUpdate(docId, update, { new: true })
+    User.findByIdAndUpdate(docId, update, { new: true })
       .then((doc) => {
         return resolve(doc);
       })

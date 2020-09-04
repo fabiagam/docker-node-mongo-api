@@ -1,0 +1,59 @@
+{
+  "_from": "mongoose-cli@latest",
+  "_id": "mongoose-cli@1.0.5",
+  "_inBundle": false,
+  "_integrity": "sha1-11qHIecFx7bYxwNLnTm+fMvwYpc=",
+  "_location": "/mongoose-cli",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mongoose-cli@latest",
+    "name": "mongoose-cli",
+    "escapedName": "mongoose-cli",
+    "rawSpec": "latest",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/mongoose-cli/-/mongoose-cli-1.0.5.tgz",
+  "_shasum": "d75a8721e705c7b6d8c7034b9d39be7ccbf06297",
+  "_spec": "mongoose-cli@latest",
+  "_where": "C:\\Ampps\\www\\docker-node-mongo-app",
+  "author": {
+    "name": "i5ting"
+  },
+  "bin": {
+    "mongoose": "index.js",
+    "mongooseconsole": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/i5ting/mongoose-cli/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "mongoose": "^4.1.1",
+    "mongoosedao": "^1.0.10",
+    "require-directory": "^2.1.1",
+    "shelljs": "^0.5.1"
+  },
+  "deprecated": false,
+  "description": "",
+  "homepage": "https://github.com/i5ting/mongoose-cli",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "mongoose-cli",
+  "preferGlobal": "true",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i5ting/mongoose-cli.git"
+  },
+  "scripts": {
+    "start": "npm publish .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.5"
+}

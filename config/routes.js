@@ -9,7 +9,7 @@ module.exports = function (app) {
   app.post("/users/login", UsersController.signin);
   app.get("/user/me", UsersController.show);
   app.get("/task/dashboard", TaskController.dashboard);
-  app.get("/task/edit/:id", TaskController.editTask);
+  app.post("/task/add", TaskController.addTask);
   app.put("/task/update/:id", TaskController.updateTask);
   app.delete("/task/delete/:id", TaskController.deleteTask);
 };

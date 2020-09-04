@@ -8,10 +8,12 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
+
 console.log("Environment :" + process.env.NODE_ENV);
+
 switch (process.env.NODE_ENV) {
   case "production":
-    mongoose.connect(process.env.MONGODB_URI, {
+    mongoose.connect(process.env.PROD_DATABASE_HOST, {
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,
@@ -19,7 +21,14 @@ switch (process.env.NODE_ENV) {
 
     break;
   case "development":
-    mongoose.connect(process.env.DB_HOST, {
+    mongoose.connect(process.env.DEV_DATABASE_HOST, {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    });
+    break;
+  case "test":
+    mongoose.connect(process.env.TEST_DATABASE_HOST, {
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,

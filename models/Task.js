@@ -14,17 +14,18 @@ const TaskSchema = new Schema({
   title: String,
   description: String,
   code: String,
+  user_id: String,
   date_added: String,
   date_timestamp: Number,
 });
 
 TaskSchema.statics.add = async (data) => {
-  let { title, description, code, userid } = odata;
+  let { title, description, code, userid } = data;
   let taskObj = {};
   taskObj.title = title;
   taskObj.code = code;
   taskObj.user_id = userid;
-  taskrObj.description = description;
+  taskObj.description = description;
   taskObj.date_added = date.setCoreDate(date.getCurrentTimestamp());
   taskObj.date_timestamp = date.getCurrentTimestamp();
 
@@ -43,8 +44,21 @@ TaskSchema.statics.add = async (data) => {
 TaskSchema.statics.getAllByUserId = (uid) => {
   return new Promise((resolve, reject) => {
     let where = { user_id: uid };
-    User.find(where)
+    Task.find(where)
       .sort({ date_timestamp: "descending" })
+      .then((p) => {
+        return resolve(p);
+      })
+      .catch((e) => {
+        return reject(new Error(e.message));
+      });
+  });
+};
+
+TaskSchema.statics.getOne = (uid) => {
+  return new Promise((resolve, reject) => {
+    let where = { _id: uid };
+    User.findOne(where)
       .then((p) => {
         return resolve(p);
       })
@@ -68,7 +82,7 @@ TaskSchema.statics.updateRecord = (docId, update) => {
 
 TaskSchema.statics.remove = (docId) => {
   return new Promise((resolve, reject) => {
-    Task.findByIdAndRemove(docId, req.body, function (err, doc) {
+    Task.findByIdAndRemove(docId, {}, function (err, doc) {
       if (err) return reject(new Error(err.message));
       return resolve(doc);
     });

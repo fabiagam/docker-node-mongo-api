@@ -56,6 +56,9 @@ exports.signin = async (req, res) => {
         let token = jwt.sign({ id: check._id }, process.env.SECRET, {
           expiresIn: 7200,
         });
+        // Update last login
+        let _result = await User.updateLastLogin(check._id);
+        check.last_login = _result.last_login;
         let ret = setResponseObject(check, token);
         return res.status(200).send({
           status: "success",
@@ -76,6 +79,8 @@ exports.signin = async (req, res) => {
       .send({ status: "error", data: null, message: e.message });
   }
 };
+
+exports.signout = async (req, res) => {};
 
 exports.show = async (req, res) => {
   const token = req.headers["x-access-token"];
