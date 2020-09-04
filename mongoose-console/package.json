@@ -35,7 +35,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "bluebird": "^2.9.34",
-    "mongoose": "^4.1.1",
+    "mongoose": "^5.10.3",
     "mongoosedao": "^1.0.10",
     "require-directory": "^2.1.1",
     "shelljs": "^0.5.1"
